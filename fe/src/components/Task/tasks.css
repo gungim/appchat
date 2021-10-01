@@ -1,0 +1,15 @@
+.tasks {
+}
+.task-item {
+  background-color: #e5ebeb;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.9);
+}
+.task-name {
+  color: #484542;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+}
