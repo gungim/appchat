@@ -1,6 +1,6 @@
+const router = require("express").Router();
 const { getFriends, addFriend, getUser } = require("../controllers/user");
 const authenticationMiddleware = require("../middleware/auth");
-const router = require("express").Router();
 
 router
   .route("/friends/:userId")
