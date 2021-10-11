@@ -26,7 +26,6 @@ function ChatOnline({ onlineUser, currentId, setCurrentChat }) {
     // setOnlineFriends(friends.filter((f) => onlineUser.includes(f._id)));
   }, [friends, onlineUser]);
 
-  console.log(onlineUser);
   const handleClick = () => {};
   return (
     <div className="chat-online">

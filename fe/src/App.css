@@ -7,3 +7,28 @@
 .container {
   padding: 10px 16px;
 }
+
+a {
+  text-decoration: none;
+}
+ul,
+li {
+  list-style: none;
+}
+
+input {
+  outline: none;
+}
+
+.btn {
+  outline: none;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: #6d1fff;
+  color: #fff;
+}

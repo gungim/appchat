@@ -1,0 +1,58 @@
+.setting-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  height: 100vh;
+  background-color: #eab6a2;
+}
+
+.menu-bar {
+  background-color: #d2a391;
+  padding-top: 20px;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.menu-bar::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.menu-bar::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+.menu-bar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  height: 4px;
+  background-color: transparent;
+}
+
+.menu-item {
+  margin: 10px 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color ease-in-out 0.3s;
+}
+
+.menu-item:hover {
+  background-color: #dc8564;
+}
+
+.menu-header {
+  color: #fffccc;
+  border-radius: 0;
+  cursor: default;
+}
+.menu-header:not(:first-child) {
+  border-top: 1px solid #ccc;
+}
+.menu-header:hover {
+  background-color: transparent;
+}
+
+.content-regison {
+  width: 100%;
+}

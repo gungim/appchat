@@ -1,0 +1,93 @@
+.account {
+  position: relative;
+  width: 100%;
+  margin-top: 30px;
+  padding: 10px;
+  width: 50%;
+  margin-left: 50px;
+}
+
+@media screen and (max-width: 900px) {
+  .account {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.account-container {
+  background-color: #674ea7;
+  padding: 10px;
+  border-radius: 8px;
+}
+.update {
+  position: absolute;
+  background-color: #674cc6;
+  top: 50%;
+  left: 50%;
+  padding: 30px;
+  transform: translateX(-50%);
+  border-radius: 8px;
+}
+
+.account-content {
+  background-color: #65b0bb;
+  margin-top: 20px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.account-title {
+  color: #fffccc;
+}
+
+.account-container img {
+  border-radius: 50%;
+  width: 80px;
+}
+
+.account-img-container > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.account-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.account-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 10px;
+  color: #fffccc;
+}
+
+.account-edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  padding: 10px;
+}
+
+.edit-title {
+  font-size: 14px;
+  color: #cff;
+}
+
+.edit-content {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.btn-edit {
+  background-color: #cc00cc;
+  color: #fff;
+}
+
+.btn-edit-password {
+  margin-top: 20px;
+}

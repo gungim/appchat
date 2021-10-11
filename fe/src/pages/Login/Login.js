@@ -1,31 +1,33 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { setUserSession } from "../../Utils/Common";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../actions/auth.actions";
+import { history } from "../../helpers/history";
 
 function Login(props) {
   const [user, setUser] = useState({ username: "", password: "" });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const { user: currendUser } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (currendUser) {
+      props.history.push("/tasks");
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null);
     setLoading(true);
-    await axios
-      .post("http://localhost:3000/api/v1/login", {
-        username: user.username,
-        password: user.password,
+    dispatch(login(user))
+      .then(() => {
+        history.push("/tasks");
+        window.location.reload();
       })
-      .then((response) => {
+      .catch(() => {
         setLoading(false);
-        setUserSession(response.data.token, response.data.user);
-        props.history.push("/");
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-        setError("Something went wrong. Please try again later.");
+        setError("Ten tai khoan hoac mat khau khong dung");
       });
   };
   return (

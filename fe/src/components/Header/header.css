@@ -13,10 +13,11 @@ header {
   align-items: center;
   width: 100%;
 }
-.logo {
+.logo > a {
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: #484542;
 }
 .user-name {
   margin-left: 10px;

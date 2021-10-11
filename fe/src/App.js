@@ -1,30 +1,27 @@
-import { useEffect } from "react";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Tasks from "./components/Task/Tasks";
 import Login from "./pages/Login";
 import Messenger from "./pages/Messenger";
-import { getToken } from "./Utils/Common";
-import PrivateRoute from "./Utils/PrivateRoute";
-import PublicRoute from "./Utils/PublicRoute";
 import Task from "./components/Task/Task";
+import User from "./components/User";
+import { useDispatch, useSelector } from "react-redux";
+import { history } from "./helpers/history";
 function App() {
-  useEffect(() => {
-    const token = getToken();
-    if (!token || null) {
-      return;
-    }
-  }, []);
+  const { user: currendUser } = useSelector((state) => state.auth);
+
+  if (!currendUser) history.push("/login");
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-          <PrivateRoute path="/tasks" exact component={Tasks} />
-          <PrivateRoute path="/" exact component={Messenger} />
-          <PublicRoute path="/login" component={Login} />
-          <PrivateRoute path="/tasks/:id" component={Task} />
+          <Route path="/tasks" exact component={Tasks} />
+          <Route path="/" exact component={Messenger} />
+          <Route path="/user/:id" exact component={User} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/tasks/:id" component={Task} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
