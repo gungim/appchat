@@ -1,7 +1,7 @@
 const Message = require("../models/Message");
 
 const newMess = async (req, res) => {
-  const newMessage = new Message(req.body);
+  const newMessage = new Message(req.body.message);
   try {
     const savedMessage = await newMessage.save();
     res.status(200).json(savedMessage);
@@ -12,12 +12,12 @@ const newMess = async (req, res) => {
 };
 
 const getMess = async (req, res) => {
+  const channel = req.params.channelId;
   try {
     const limit = 20;
     const page = req.query.page ? req.query.page : 0;
-    console.log(page);
     const messages = await Message.find({
-      conversationId: req.params.conversationId,
+      channel,
     })
       .limit(limit)
       .skip(5 * page)

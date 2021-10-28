@@ -6,6 +6,10 @@ const UserSchema = new mongoose.Schema(
       required: [true, "must provide name"],
       trim: true,
     },
+    avatar: {
+      data: Buffer,
+      contentType: String,
+    },
     password: {
       type: String,
       required: true,

@@ -2,8 +2,27 @@ const mongoose = require("mongoose");
 
 const ConversationSchema = mongoose.Schema(
   {
-    members: {
-      type: Array,
+    avatar: {
+      data: Buffer,
+      contentType: String,
+    },
+    name: {
+      type: String,
+      required: true,
+      minLength: 1,
+    },
+    description: {
+      type: String,
+    },
+    admin: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+    },
+    icon: {
+      type: String,
     },
   },
   {

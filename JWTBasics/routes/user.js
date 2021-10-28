@@ -3,7 +3,7 @@ const { getFriends, addFriend, getUser } = require("../controllers/user");
 const authenticationMiddleware = require("../middleware/auth");
 
 router
-  .route("/friends/:userId")
+  .route("/user/friends/:userId")
   .get(authenticationMiddleware, getFriends)
   .patch(authenticationMiddleware, addFriend);
 router.route("/user?").get(authenticationMiddleware, getUser);

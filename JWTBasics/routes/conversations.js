@@ -1,13 +1,19 @@
+const express = require("express");
+const router = express.Router();
+const upload = require("../middleware/upload-image");
+
 const {
   createConversation,
   getConversation,
-  getTwoUser,
+  getAllConversation,
+  searchConversation,
+  avatar,
 } = require("../controllers/conversations");
+const authenticationMiddleware = require("../middleware/auth");
 
-const router = require("express").Router();
-
-router.route("/conversation").post(createConversation);
-router.route("/conversation/:id").get(getConversation);
-router.route("/conversation/:firstUserId/:secondUserId").get(getTwoUser);
+router.route("/conversations").post(createConversation).get(getAllConversation);
+router.route("/conversations/:id").get(getConversation);
+router.route("/conversations/avatar/:id").get(avatar);
+router.route("/discover-guild").get(searchConversation);
 
 module.exports = router;
