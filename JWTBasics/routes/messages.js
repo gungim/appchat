@@ -1,8 +1,8 @@
-const { newMess, getMess } = require("../controllers/messages");
+const { newMess, getMessages, getMessage } = require("../controllers/messages");
 
 const router = require("express").Router();
 
-router.route("/messages/:channelId").post(newMess);
-router.route("/messages/:channelId?").get(getMess);
+router.route("/messages/:channelId").post(newMess).get(getMessages);
+router.route("/message").get(getMessage);
 
 module.exports = router;

@@ -45,20 +45,22 @@ const createConversation = async (req, res) => {
 
 const getAllConversation = async (req, res) => {
   const user = req.query.userId;
+  try {
+    const conver = await Members.find({ user })
+      .populate("conversation", "_id name admin createdAt updatedAt")
+      .select("conversation");
 
-  const conver = await Members.find({ user })
-    .populate("conversation", "_id name admin createdAt updatedAt")
-    .select("conversation");
+    const b = await Promise.all(
+      conver.map(async (c) => {
+        const mb = await Channel.findOne({ conversation: c.conversation._id });
 
-  const b = await Promise.all(
-    conver.map(async (c) => {
-      const mb = await Channel.findOne({ conversation: c.conversation._id });
-
-      return { conversation: c.conversation, selectedChannel: mb };
-    })
-  );
-  console.log(b);
-  res.send("msg");
+        return { conversation: c.conversation, selectedChannel: mb };
+      })
+    );
+    res.status(200).json(b);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 
   // Members.find({
   // user,

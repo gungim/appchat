@@ -7,15 +7,31 @@ const MessageSchema = mongoose.Schema(
       required: true,
       ref: "Channel",
     },
-    _sender: mongoose.Schema.Types.ObjectId,
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    replyId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
     text: {
       type: String,
     },
-    like: {
+    messageType: {
+      type: Number,
+      default: 0,
+    },
+    emotions: {
       type: Array,
       default: [],
     },
   },
   { timestamps: true }
 );
+
+// 0 message
+// 1 date message
+// 2 image/video
+//
 module.exports = mongoose.model("Message", MessageSchema);

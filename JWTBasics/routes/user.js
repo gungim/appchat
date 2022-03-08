@@ -6,6 +6,6 @@ router
   .route("/user/friends/:userId")
   .get(authenticationMiddleware, getFriends)
   .patch(authenticationMiddleware, addFriend);
-router.route("/user?").get(authenticationMiddleware, getUser);
+router.route("/user?").get(getUser);
 
 module.exports = router;
