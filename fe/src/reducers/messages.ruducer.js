@@ -1,4 +1,4 @@
-import { messagesContants } from "../constants/messages.contants";
+import { messagesContants } from '../constants/messages.contants';
 
 const initialState = [];
 
@@ -6,6 +6,19 @@ const messagesReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case messagesContants.GET_MESSAGE_SUCCESS:
+      // if (state.messages) {
+      // const list = state.messages;
+      // const fetchMessageData = payload.messages;
+      // const messages = list.concat(fetchMessageData);
+      // return {
+      // ...state,
+      // messages: list,
+      // };
+      // } else
+      // return {
+      // ...state,
+      // messages: payload.messages,
+      // };
       return {
         ...state,
         messages: payload.messages,
@@ -23,7 +36,6 @@ const messagesReducer = (state = initialState, action) => {
     case messagesContants.SEEND_MESSAGE_FAILURE:
       return {
         ...state,
-        messages: [...state.messages],
       };
     default:
       return {

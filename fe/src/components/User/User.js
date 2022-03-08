@@ -1,26 +1,44 @@
 import React, { useState } from "react";
 import Account from "./Account";
 import Other from "./Other";
-import "./user.css";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import {
+  CloseButton,
+  ContentRegion,
+  Layers,
+  LayersGrid,
+  MenuBar,
+  MenuBarContainer,
+  MenuHeader,
+  MenuItem,
+  ContentRegionContainer,
+} from "../../styled/styled";
 
-function User() {
+function User({ showSettingUser, setShowSettingUser }) {
   const [name, setName] = useState("Account");
   return (
-    <div className="setting-container">
-      <div className="menu-bar">
-        <div className="menu-header menu-item">Cài đặt người dùng</div>
-        <div className="menu-item" onClick={() => setName("Account")}>
-          Tài khoản của tôi
-        </div>
-        <div className="menu-item" onClick={() => setName("Other")}>
-          Other
-        </div>
-      </div>
-      <div className="content-rigison">
-        {name === "Account" && <Account />}
-        {name === "Other" && <Other />}
-      </div>
-    </div>
+    <Layers>
+      <LayersGrid>
+        <MenuBar>
+          <MenuBarContainer>
+            <MenuHeader>Cài đặt người dùng</MenuHeader>
+            <MenuItem onClick={() => setName("Account")}>
+              Tài khoản của tôi
+            </MenuItem>
+            <MenuItem onClick={() => setName("Other")}>Other</MenuItem>
+          </MenuBarContainer>
+        </MenuBar>
+        <ContentRegion>
+          <ContentRegionContainer>
+            {name === "Account" && <Account />}
+            {name === "Other" && <Other />}
+          </ContentRegionContainer>
+        </ContentRegion>
+        <CloseButton onClick={() => setShowSettingUser(false)}>
+          <CancelOutlinedIcon />
+        </CloseButton>
+      </LayersGrid>
+    </Layers>
   );
 }
 

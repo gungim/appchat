@@ -1,0 +1,4 @@
+export const friendConstans = {
+  GET_FRIENDS_SUCCESS: "GET_FRIENDS_SUCCESS",
+  GET_FRIENDS_FAILURE: "GET_FRIENDS_FAILURE",
+};

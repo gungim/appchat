@@ -3,6 +3,7 @@ import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/auth.actions";
 import { history } from "../../helpers/history";
+import { Input } from "../../styled/styled";
 
 function Login(props) {
   const [user, setUser] = useState({ username: "", password: "" });
@@ -44,7 +45,7 @@ function Login(props) {
         <label htmlFor="uname">
           <b>Username</b>
         </label>
-        <input
+        <Input
           type="text"
           placeholder="Enter Username"
           name="uname"
@@ -55,7 +56,7 @@ function Login(props) {
         <label htmlFor="psw">
           <b>Password</b>
         </label>
-        <input
+        <Input
           type="password"
           placeholder="Enter Password"
           name="psw"

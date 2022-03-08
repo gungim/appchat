@@ -1,7 +1,7 @@
-import axios from "axios";
-import authHeader from "./auth-header";
+import axios from 'axios';
+import authHeader from './auth-header';
 
-const API_URL = "http://localhost:8080/api/v1/messages";
+const API_URL = 'http://localhost:8080/api/v1/messages';
 
 const getMessages = async (id, page) => {
   return await axios
@@ -11,9 +11,11 @@ const getMessages = async (id, page) => {
     });
 };
 const sendMessage = async (message) => {
-  return await axios.post(`${API_URL}`, message).then((res) => {
-    return res.data;
-  });
+  return await axios
+    .post(`${API_URL}/${message.channel}`, message)
+    .then((res) => {
+      return res.data;
+    });
 };
 
 export default { getMessages, sendMessage };

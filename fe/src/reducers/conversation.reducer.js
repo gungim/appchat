@@ -1,24 +1,23 @@
-import { conversationConstants } from "../constants";
+import { conversationConstants } from '../constants'
 
-let initialState = {};
+const initialState = {}
 
 const conversation = (state = initialState, action) => {
-  const { type, payload } = action;
+  const { type, payload } = action
   switch (type) {
-    case conversationConstants.GET_ROOMS_SUCCESS:
+    case conversationConstants.GET_CONVERSATION_SUCCESS:
       return {
         ...state,
         conversation: payload.conversation,
-      };
-    case conversationConstants.GET_ROOMS_FAILURE:
+      }
+    case conversationConstants.GET_CONVERSATION_FAILURE:
       return {
         ...state,
         conversation: null,
-      };
-
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default conversation;
+export default conversation

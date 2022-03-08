@@ -1,5 +1,5 @@
-import messagesServices from "../services/messages.services";
-import { messagesContants } from "../constants/messages.contants";
+import messagesServices from '../services/messages.services';
+import { messagesContants } from '../constants';
 
 export const getMessages = (id, page) => async (dispatch) => {
   return messagesServices.getMessages(id, page).then(
