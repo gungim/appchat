@@ -4,10 +4,9 @@ import {
   ButtonWarning,
   FloatTingComponents,
   FloatTingWrapper,
-  ButtonPrimary,
   Button,
-} from '../../styled/styled';
-import { deleteChannel } from '../../actions/channels.actions';
+} from '../../styled';
+import { deleteChannel } from '../../redux/actions/channels.actions';
 
 function DeleteChannel({
   currentChannel,

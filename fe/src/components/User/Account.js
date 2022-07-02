@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import UpdateUsername from "./UpdateUsername";
 import UpdatePassword from "./UpdatePassword";
-import "./account.css";
 
 function Account({}) {
   const dispatch = useDispatch();

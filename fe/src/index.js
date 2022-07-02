@@ -1,16 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import { store } from "./store";
-import { GlobalStyle } from "./styled/globalStyle";
+import { store } from "./redux/store";
+import "./index.css";
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
   <Provider store={store}>
-    <GlobalStyle />
     <App />
-  </Provider>,
-  document.getElementById("root")
+  </Provider>
 );
-reportWebVitals();

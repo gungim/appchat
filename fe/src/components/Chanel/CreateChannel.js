@@ -1,9 +1,8 @@
 import CancelOutlined from '@mui/icons-material/CancelOutlined';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createChannel } from '../../actions/channels.actions';
-import { Input, CloseButton, ButtonPrimary } from '../../styled/styled';
-import './createChannel.css';
+import { createChannel } from '../../redux/actions/channels.actions';
+import { Input, CloseButton, ButtonPrimary } from '../../styled';
 import onClickOutside from 'react-onclickoutside';
 import { CreateChannelContainer, CreateChannelWrapper } from './styled';
 
@@ -12,6 +11,7 @@ function CreateChannel({
   setIsShowCreateChannel,
   isShowCreateChannel,
 }) {
+
   CreateChannel.handleClickOutside = () => setIsShowCreateChannel(false);
 
   const [name, setChannel] = useState('');
@@ -25,11 +25,11 @@ function CreateChannel({
   const handleSubmit = () => {
     const newName = name.trim();
     if (newName === '') return;
-    const conversation = guildId;
+    const guild = guildId;
     const channel = {
       name,
       channelType,
-      conversation,
+      guild,
     };
     dispatch(createChannel(channel)).then(() => {
       setIsShowCreateChannel(false);

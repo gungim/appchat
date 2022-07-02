@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../actions/auth.actions";
+import { login } from "../../redux/actions/auth.actions";
 import { history } from "../../helpers/history";
-import { Input } from "../../styled/styled";
+import { Input } from "../../styled";
 
 function Login(props) {
   const [user, setUser] = useState({ username: "", password: "" });

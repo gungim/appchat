@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const MembersSchema = mongoose.Schema(
   {
-    conversation: {
+    guild: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Conversation",
+      ref: "Guild",
       required: true,
     },
     user: {

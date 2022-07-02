@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import './style.css';
-import FileBase from 'react-file-base64';
-import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import {
   CloseButton,
   FloatTingComponents,
   FloatTingWrapper,
   Input,
-} from '../../../styled/styled';
+} from '../../../styled';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { useDispatch, useSelector } from 'react-redux';
-import { createGuild } from '../../../actions/conversations.action';
+import { createGuild } from '../../../redux/actions/guild.action';
 import FileBase64 from 'react-file-base64';
 
 function NewGuild({ isNewGuild, setIsNewGuild }) {
@@ -45,7 +42,7 @@ function NewGuild({ isNewGuild, setIsNewGuild }) {
   return (
     <FloatTingComponents>
       <FloatTingWrapper width="500px" height="min-content" background="#fff">
-        <div className="new-conversation-wrapper">
+        <div className="new-guild-wrapper">
           <form onSubmit={handleSubmit}>
             <div className="new-header">
               <div className="new-header-wrapper">
@@ -75,7 +72,7 @@ function NewGuild({ isNewGuild, setIsNewGuild }) {
               </div>
             </div>
 
-            <div className="name-conversation">
+            <div className="name-guild">
               <label>
                 <p>TÊN MÁY CHỦ</p>
               </label>
@@ -86,15 +83,7 @@ function NewGuild({ isNewGuild, setIsNewGuild }) {
                 onChange={handleChange('name')}
               />
             </div>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              type="submit"
-              fullWidth
-            >
-              Submit
-            </Button>
+            <button>Submit</button>
           </form>
         </div>
         <CloseButton

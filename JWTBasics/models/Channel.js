@@ -6,9 +6,9 @@ const ChannelSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    conversation: {
+    guild: {
       type: mongoose.Schema.ObjectId,
-      ref: "Conversation",
+      ref: "Guild",
       required: true,
     },
     channelType: {

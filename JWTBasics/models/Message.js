@@ -18,9 +18,8 @@ const MessageSchema = mongoose.Schema(
     text: {
       type: String,
     },
-    messageType: {
-      type: Number,
-      default: 0,
+    file:{
+      type: String
     },
     emotions: {
       type: Array,

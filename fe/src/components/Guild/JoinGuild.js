@@ -1,15 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-const JoinConversation = (conversationId) => {
+const JoinGuild = (guildId) => {
   const dispatch = useDispatch();
 
   return (
     <div>
-      <div>Join conversation</div>
+      <div>Join guild</div>
       <button className="add-room">Add</button>
     </div>
   );
 };
 
-export default JoinConversation;
+export default JoinGuild;

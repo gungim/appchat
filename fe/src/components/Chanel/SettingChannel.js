@@ -10,7 +10,7 @@ import {
   MenuItemWarning,
   ContentRegion,
   ContentRegionContainer,
-} from '../../styled/styled';
+} from '../../styled';
 import Overview from './Overview';
 
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';

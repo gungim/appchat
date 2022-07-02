@@ -1,8 +1,0 @@
-div.DraftEditor-root {
-}
-
-div.DraftEditor-editorContainer,
-div.public-DraftEditor-content {
-  height: 100%;
-  max-height: 50vh;
-}

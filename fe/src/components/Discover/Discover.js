@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, SideBar, SideBarContainer } from "../../styled/styled";
+import { Container, SideBarContainer } from "../../styled";
 import {
   HeaderContent,
   HeaderContentWrapper,
@@ -23,9 +23,8 @@ import {
 } from "./styled";
 import headerImg from "../../images/colorful-3256055.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { searchDiscover } from "../../actions/searchDiscover.actions";
+import { searchDiscover } from "../../redux/actions/searchDiscover.actions";
 import ReactPaginate from "react-paginate";
-import "./style.css";
 import { Link } from "react-router-dom";
 
 function Discover({}) {
@@ -49,7 +48,7 @@ function Discover({}) {
     setOffSet(page * 12);
   };
   return (
-    <SideBar>
+    <div className="max-h-screen flex w-full overflow-hidden relative">
       <SideBarContainer>
         <header>
           <h1>Kham pha</h1>
@@ -86,20 +85,20 @@ function Discover({}) {
           <GuildListSection>
             <SearchTitle>Cộng đồng nổi bật</SearchTitle>
             <GuildList>
-              {discover?.conversations.map((d) => (
-                <Link to={`/channels/${d._id}`}>
-                  <Loaded key={d._id}>
+              {discover?.guilds.map((d) => (
+                <Link to={`/channels/${d._id}`} key={d._id} >
+                  <Loaded >
                     <Card>
                       <CardHeader>
                         <Splash>
                           <img
-                            src={`http://localhost:8080/api/v1/conversations/avatar/${d._id}`}
+                            src={`http://localhost:8080/api/v1/guilds/avatar/${d._id}`}
                             alt=""
                           />
                         </Splash>
                         <GuildIcon>
                           <img
-                            src={`http://localhost:8080/api/v1/conversations/avatar/${d._id}`}
+                            src={`http://localhost:8080/api/v1/guilds/avatar/${d._id}`}
                             alt=""
                           />
                         </GuildIcon>
@@ -127,7 +126,7 @@ function Discover({}) {
           />
         </Scroller>
       </PageWrap>
-    </SideBar>
+    </div>
   );
 }
 

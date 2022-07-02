@@ -2,10 +2,10 @@ const Channel = require("../models/Channel");
 const Message = require("../models/Message");
 
 const getAllChannel = async (req, res) => {
-  const conversation = req.query.conversationId;
+  const guild = req.query.guildId;
   try {
     const channels = await Channel.find({
-      conversation,
+      guild,
     });
     res.status(200).json(channels);
   } catch (e) {
@@ -17,7 +17,7 @@ const createChannel = async (req, res) => {
   const channel = req.body;
   const newChannel = new Channel({
     name: channel.name,
-    conversation: channel.conversation,
+    guild: channel.guild,
     channelType: channel.channelType,
   });
   try {
@@ -72,8 +72,8 @@ const deleteChannel = async (req, res) => {
 };
 
 const getdefaultChannel = async (req, res) => {
-  const conversation = req.params.id;
-  Channel.findOne({ conversation })
+  const guild = req.params.id;
+  Channel.findOne({ guild })
     .select("_id")
     .exec((err, data) => {
       if (err) res.status(400).json(err);

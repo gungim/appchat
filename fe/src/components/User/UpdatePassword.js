@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../../actions/auth.actions";
-import "./updateUsername.css";
+import { updateUser } from "../../redux/actions/auth.actions";
 
 function UpdateUsername({ setIsOpen, isOpen, currentUser }) {
   const [user, setUser] = useState({

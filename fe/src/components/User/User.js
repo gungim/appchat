@@ -12,7 +12,7 @@ import {
   MenuHeader,
   MenuItem,
   ContentRegionContainer,
-} from "../../styled/styled";
+} from "../../styled";
 
 function User({ showSettingUser, setShowSettingUser }) {
   const [name, setName] = useState("Account");

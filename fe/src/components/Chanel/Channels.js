@@ -1,35 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import './channels.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { getGuild } from '../../actions/conversations.action';
-import ContactlessOutlinedIcon from '@mui/icons-material/ContactlessOutlined';
-import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
-import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
-import SettingsIcon from '@mui/icons-material/Settings';
-import {
-  SideBar,
-  SideBarContainer,
-  SideBarItem,
-  SideBarItems,
-  HeaderContainer,
-} from '../../styled/styled';
-import CreateChannel from './CreateChannel';
-import Chats from '../Chat';
-import { Link, useLocation, useParams } from 'react-router-dom';
-import { getAllChannel } from '../../actions/channels.actions';
-import SettingGuild from '../Guild/SettingGuild/SettingGuild';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getGuild } from "../../redux/actions/guild.action";
+import { getAllChannel } from "../../redux/actions/channels.actions";
+import ContactlessOutlinedIcon from "@mui/icons-material/ContactlessOutlined";
+import ForumOutlinedIcon from "@mui/icons-material/ForumOutlined";
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
+import SettingsIcon from "@mui/icons-material/Settings";
+import CreateChannel from "./CreateChannel";
+import Messenger from "../Messenger";
+import { Link, useParams } from "react-router-dom";
+import SettingGuild from "../Guild/SettingGuild/SettingGuild";
 import {
   ChannelContainer,
   ItemIcon,
   SideBarHeader,
   SideBarItemIcon,
-} from './styled';
-import SettingChannel from './SettingChannel';
+} from "./styled";
+import {
+  SideBarContainer,
+  SideBarItem,
+  SideBarItems,
+} from "../../styled";
+import SettingChannel from "./SettingChannel";
 
 function Channels() {
-  const { guildId, channelId } = useParams();
+  const { guildId } = useParams();
   const { channels } = useSelector((state) => state.channels);
-  const { conversation } = useSelector((state) => state.conversation);
+  const { guild } = useSelector((state) => state.guild);
   const dispatch = useDispatch();
   const [isShowCreateChannel, setIsShowCreateChannel] = useState(false);
   const [isShowSettingGuild, setIsShowSettingGuild] = useState(false);
@@ -46,12 +43,12 @@ function Channels() {
   }, [guildId]);
 
   return (
-    <SideBar>
+    <div className="max-h-screen flex w-full overflow-hidden relative">
       <SideBarContainer>
-        <div className="channel-private">
+        <div>
           <SideBarHeader onClick={() => setIsShowSettingGuild(true)}>
-            <div className="channel-header-wrapper">
-              <p>{conversation?.name}</p>
+            <div>
+              <p>{guild?.name}</p>
             </div>
             <SettingGuild
               isShowSettingGuild={isShowSettingGuild}
@@ -60,8 +57,8 @@ function Channels() {
           </SideBarHeader>
           <SideBarItems>
             <SideBarItem>
-              <div className="channel-type-name">Void</div>
-              {conversation?.admin === currentUser.user.id ? (
+              <div>Kênh thoại</div>
+              {guild?.admin === currentUser.user.id ? (
                 <SideBarItemIcon>
                   <ItemIcon onClick={() => setIsShowCreateChannel(true)}>
                     <AddCircleOutlinedIcon />
@@ -75,30 +72,29 @@ function Channels() {
               <div key={c._id}>
                 <SideBarItem>
                   <ChannelContainer>
-                    <Link
-                      to={{
-                        pathname: `/channels/${guildId}/${c._id}`,
-                        state: { guildId: guildId, selectedChannelId: c._id },
-                      }}
-                    >
-                      <div className="channel-name">
-                        <div className="channel-type">
-                          {c.channelType === 'void' ? (
-                            <div className="channel-info">
-                              <ContactlessOutlinedIcon />
-                              <span>{c.name}</span>
-                            </div>
-                          ) : (
-                            <div className="channel-info">
-                              <ForumOutlinedIcon />
-                              <span>{c.name}</span>
-                            </div>
-                          )}
-                        </div>
+                    {c.channelType === "void" ? (
+                      <div className="channel-info">
+                        <ContactlessOutlinedIcon />
+                        <span>{c.name}</span>
                       </div>
-                    </Link>
+                    ) : (
+                      <Link
+                        to={{
+                          pathname: `/channels/${guildId}/${c._id}`,
+                          state: {
+                            guildId: guildId,
+                            selectedChannelId: c._id,
+                          },
+                        }}
+                      >
+                        <div className="">
+                          <ForumOutlinedIcon />
+                          <span>{c.name}</span>
+                        </div>
+                      </Link>
+                    )}
                   </ChannelContainer>
-                  {conversation?.admin === currentUser.user.id ? (
+                  {guild?.admin === currentUser.user.id ? (
                     <SideBarItemIcon>
                       <ItemIcon>
                         <AddCircleOutlinedIcon />
@@ -121,7 +117,7 @@ function Channels() {
           </SideBarItems>
         </div>
       </SideBarContainer>
-      <Chats guildId={guildId} channelId={channelId} />
+      <Messenger />
 
       <CreateChannel
         guildId={guildId}
@@ -136,7 +132,7 @@ function Channels() {
           setCurrentChannel={setCurrentChannel}
         />
       )}
-    </SideBar>
+    </div>
   );
 }
 

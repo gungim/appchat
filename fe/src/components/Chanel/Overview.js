@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateChannel } from '../../actions/channels.actions';
-import { ButtonPrimary, Input } from '../../styled/styled';
-import './overview.css';
+import { useDispatch} from 'react-redux';
+import { updateChannel } from '../../redux/actions/channels.actions';
+import { ButtonPrimary, Input } from '../../styled';
 
 function Overview({ currentChannel, setShowSettingChannel }) {
   const [channel, setChannel] = useState({

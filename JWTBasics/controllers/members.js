@@ -1,14 +1,14 @@
 const Members = require("../models/Members");
 
 const addMember = async (req, res) => {
-  const conversation = req.params.conversationId;
+  const guild = req.params.guildId;
   const { user, roles } = req.body.user;
 
-  Members.find({ conversation, user }).exec((err, data) => {
+  Members.find({ guild, user }).exec((err, data) => {
     if (err) res.status(400).json(err);
     if (data.length === 0) {
       let member = new Members();
-      member.conversation = conversation;
+      member.guild = guild;
       member.user = user;
       member.roles = roles ? roles : "1";
       member.save((err, result) => {
@@ -22,12 +22,12 @@ const addMember = async (req, res) => {
 };
 
 const getAllMember = async (req, res) => {
-  const conversation = req.params.conversationId;
+  const guild = req.params.guildId;
   Members.find({
-    conversation,
+    guild,
   })
     .populate("user", "_id username")
-    .select("_id conversation user roles createdAt updatedAt")
+    .select("_id guild user roles createdAt updatedAt")
     .exec((err, data) => {
       if (err) res.status(400).json(err);
 
